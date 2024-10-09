@@ -1,48 +1,59 @@
-import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
+import { FaUser, FaLock } from "react-icons/fa";
 import "./Login.css";
 
 const Login = () => {
-   
-   const [username, setUsername] = useState("")
-   const [password, setPassword] = useState("")
+  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-   const handleSubmit = (event) =>{
-    event.preventDefault()
-
-    alert("Enviando os dados:" + username + " - " + password)
-   } 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    console.log("Dados de Login:", { username, password });
+  };
 
   return (
-   <div className="conteiner">
-    <form onSubmit= {handleSubmit}>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
         <h1>Acesse o sistema</h1>
-        <div>
-        <input type="email" placeholder="E-mail" required onChange={(e) => setUsername(e.target.value)}/>
-        <FaUser className="icon"/>
+        <div className="input-field">
+          <input
+            type="text"
+            placeholder="E-mail"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <FaUser className="icon" />
         </div>
-        <div>
-        <input type="password" placeholder="senha" onChange={(e) => setPassword(e.target.value)}/>
-        <FaLock className="icon"/>
+        <div className="input-field">
+          <input
+            type="password"
+            placeholder="Senha"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FaLock className="icon" />
         </div>
 
         <div className="recall-forget">
-            <label htmlFor="">
-                <input type= "checkbox"/>
-                Lembre de mim
-            </label>
-            <a href="#">Esqueceu a senha?</a>
+          <label>
+            <input type="checkbox" />
+            Lembre de mim
+          </label>
+          <a href="#">Esqueceu sua senha?</a>
         </div>
-
-        <button>Entrar</button>
-        <div className="signup link">
-            <p>
-             Não tem uma conta? <a href="#">Registrar</a>
-            </p>
+        <button type="submit">Login</button>
+        <div className="signup-link">
+          <p>
+            Não tem uma conta? <a href="#">Registar</a>{" "}
+          </p>
         </div>
-    </form>
-   </div>
-  )
-}
+      </form>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
